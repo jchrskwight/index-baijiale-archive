@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.5">
+  <title>资料索引 · 百家乐信息整理</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background: #f5f9fc;
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+      color: #1d2b36;
+      line-height: 1.6;
+      padding: 1.5rem;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .page {
+      max-width: 1120px;
+      margin: 0 auto;
+      width: 100%;
+      flex: 1;
+    }
+
+    /* 网格卡片专有背景纹理（极简） */
+    .card-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1.25rem;
+      margin: 1.5rem 0;
+    }
+
+    @media (min-width: 520px) {
+      .card-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    @media (min-width: 820px) {
+      .card-grid {
+        grid-template-columns: 1fr 1fr 1fr;
+      }
+    }
+
+    .card {
+      background: #ffffff;
+      border-radius: 1.25rem;
+      padding: 1.75rem 1.5rem;
+      box-shadow: 0 6px 14px rgba(16, 56, 64, 0.05), 0 1px 4px rgba(0, 30, 40, 0.04);
+      border-left: 5px solid #2a9d8f;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 12px 24px rgba(0, 70, 60, 0.08);
+    }
+
+    .card h3 {
+      font-size: 1.2rem;
+      font-weight: 600;
+      letter-spacing: -0.01em;
+      color: #1a3a40;
+      margin-bottom: 0.6rem;
+      border-bottom: 2px solid #e7f0f2;
+      padding-bottom: 0.5rem;
+    }
+
+    .card p {
+      font-size: 0.95rem;
+      color: #2b4550;
+    }
+
+    .card .tag {
+      display: inline-block;
+      background: #e1f0ee;
+      color: #0d5b56;
+      font-size: 0.75rem;
+      font-weight: 500;
+      padding: 0.2rem 0.7rem;
+      border-radius: 20px;
+      margin-top: 0.75rem;
+      align-self: flex-start;
+    }
+
+    /* hero区域 */
+    .hero {
+      padding: 2rem 0 1.5rem 0;
+    }
+
+    .hero h1 {
+      font-size: 2.2rem;
+      font-weight: 600;
+      letter-spacing: -0.02em;
+      background: linear-gradient(135deg, #0b5e5a, #1d7a70);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      margin-bottom: 0.5rem;
+    }
+
+    .hero .subhead {
+      font-size: 1.1rem;
+      color: #3d616b;
+      max-width: 580px;
+      border-left: 4px solid #2a9d8f;
+      padding-left: 1rem;
+      margin-top: 0.25rem;
+    }
+
+    /* 信息块 */
+    .info-block {
+      background: #eef6f8;
+      padding: 1.8rem 1.8rem 2rem;
+      border-radius: 1.8rem;
+      margin: 1.8rem 0;
+      border: 1px solid #d0e4e3;
+    }
+
+    .info-block h2 {
+      font-size: 1.5rem;
+      font-weight: 600;
+      color: #144a4a;
+      margin-bottom: 0.7rem;
+      letter-spacing: -0.01em;
+    }
+
+    .info-block p {
+      margin-bottom: 0.8rem;
+    }
+
+    .info-block .inline-link {
+      color: #117a6f;
+      font-weight: 500;
+      text-decoration: none;
+      border-bottom: 1.5px solid #b8d9d4;
+      transition: border-color 0.2s;
+    }
+
+    .info-block .inline-link:hover {
+      border-bottom-color: #0c5b53;
+    }
+
+    .faq-mini {
+      margin: 2.5rem 0 2rem;
+    }
+
+    .faq-mini details {
+      background: white;
+      padding: 1rem 1.5rem;
+      border-radius: 2rem;
+      margin-bottom: 0.8rem;
+      border: 1px solid #d4e3e0;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.02);
+    }
+
+    .faq-mini summary {
+      font-weight: 600;
+      color: #1b4d49;
+      cursor: pointer;
+      font-size: 1rem;
+      padding: 0.2rem 0;
+    }
+
+    .faq-mini details p {
+      margin: 0.7rem 0 0.3rem;
+      padding-left: 0.3rem;
+      color: #284d55;
+      font-size: 0.95rem;
+    }
+
+    .footnote {
+      border-top: 1px solid #cde0de;
+      margin-top: 2.8rem;
+      padding-top: 1.8rem;
+      font-size: 0.9rem;
+      color: #4c6b70;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: baseline;
+      gap: 0.8rem;
+    }
+
+    .footnote a {
+      color: #117a6f;
+      text-decoration: none;
+      font-weight: 500;
+      border-bottom: 1px solid #b6d3cf;
+    }
+
+    .footnote a:hover {
+      border-bottom-color: #06453e;
+    }
+
+    .btn-ghost {
+      display: inline-block;
+      background: transparent;
+      border: 1.5px solid #2a9d8f;
+      color: #117a6f;
+      font-weight: 500;
+      padding: 0.4rem 1rem;
+      border-radius: 2rem;
+      font-size: 0.9rem;
+      transition: background 0.2s, color 0.2s;
+      text-decoration: none;
+    }
+
+    .btn-ghost:hover {
+      background: #2a9d8f;
+      color: white;
+    }
+
+    /* 移动端微调 */
+    @media (max-width: 480px) {
+      body { padding: 0.9rem; }
+      .hero h1 { font-size: 1.8rem; }
+      .card { padding: 1.3rem; }
+      .info-block { padding: 1.3rem; }
+    }
+
+    /* 可读性辅助 */
+    hr {
+      border: none;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, #b0cdc9, transparent);
+      margin: 1.2rem 0;
+    }
+
+  </style>
+</head>
+<body>
+  <div class="page">
+    <!-- hero -->
+    <div class="hero">
+      <h1>信息索引 · 百家乐</h1>
+      <div class="subhead">一份从资料整理出发的结构化说明，聚焦规则、策略与认知框架</div>
+    </div>
+
+    <!-- 摘要卡片网格 -->
+    <div class="card-grid">
+      <div class="card">
+        <h3>⌛ 规则速览</h3>
+        <p>闲、庄、和三种基础投注，每局使用八副牌混合，点数和值取个位比大小。庄家抽水5%，但完整规则细节建议查阅权威来源。</p>
+        <span class="tag">资料摘要</span>
+      </div>
+      <div class="card">
+        <h3>📊 常见策略整理</h3>
+        <p>平注法、反鞅、1-3-2-6 等模式在社群中被讨论，但需要理解每手独立，没有任何系统能改变期望值。理解概率比追逐模式更重要。</p>
+        <span class="tag">理性参考</span>
+      </div>
+      <div class="card">
+        <h3>📁 索引用途</h3>
+        <p>本页将分散的信息整合为分类笔记，适合希望系统了解规则、术语、概率分布的阅读者，并非教学或推荐。</p>
+        <span class="tag">说明页</span>
+      </div>
+    </div>
+
+    <!-- 产品式亮点 + 使用建议 混合内容块 -->
+    <div class="info-block">
+      <h2>从资料整理中提炼的亮点</h2>
+      <p>
+        作为索引页，我们不堆砌主观评价，而是列出经过核对的常规认知：
+        <br><br>
+        <strong>· 概率基础</strong> —— 庄胜概率约45.86%，闲约44.62%，和约9.52%（八副牌条件下）。<br>
+        <strong>· 抽水与期望</strong> —— 庄抽水5%后庄的期望值约为-1.06%，闲为-1.24%，和约-14.4%。这些数字是长期统计结果，短期波动极大。<br>
+        <strong>· 路纸概念</strong> —— 珠盘路、大路、小路等记录方式，本质是历史图形，不具预测功能，但被许多资料作为分析工具整理。<br>
+        <br>
+        以上数据来自多份规则说明及概率教材交叉验证。如果你希望浏览更全面的资料集合，可以参考 <a href="https://index--baijiale.com" class="inline-link">百家乐</a> 信息聚合页，那里收录了更多术语表、赔率对比和常见误解澄清。
+      </p>
+      <p style="margin-top: 1rem;">
+        <strong>使用建议</strong> · 将本页视为阅读的起点。先理解赌场优势与独立事件的性质，再接触策略讨论。任何声称“必胜”或“系统漏洞”的内容都应当保持警惕。
+      </p>
+    </div>
+
+    <!-- 场景 / 补充说明卡片（另一组网格，差异化） -->
+    <div style="display: grid; grid-template-columns: 1fr; gap: 1rem; margin: 1.5rem 0;">
+      <div style="background: #f0f7f5; border-radius: 1.5rem; padding: 1.5rem 1.8rem; border: 1px solid #cde2dd;">
+        <h3 style="color: #135a54; font-size: 1.2rem; margin-bottom: 0.5rem;">📌 合适的使用场景</h3>
+        <ul style="list-style: none; padding-left: 0;">
+          <li style="margin-bottom: 0.5rem;">✓ 快速查阅规则与赔付标准</li>
+          <li style="margin-bottom: 0.5rem;">✓ 对比不同资料对“庄抽水”的解释</li>
+          <li style="margin-bottom: 0.5rem;">✓ 了解常见术语（例：切牌、销牌、龙宝）</li>
+          <li style="margin-bottom: 0.5rem;">✓ 阅读前梳理概率观念</li>
+        </ul>
+        <p style="color: #2a5450; font-size: 0.9rem; margin-top: 0.8rem;">本索引未收录任何台面、赔付率变动或第三方链接，仅提供框架式摘要。</p>
+      </div>
+    </div>
+
+    <!-- FAQ 摘要 -->
+    <div class="faq-mini">
+      <details>
+        <summary>❓ 索引中提到的“路纸”是必要的吗？</summary>
+        <p>路纸是部分资料中用于记录历史开局的辅助图表，并非官方规则。许多说明将其作为“趋势观察工具”介绍，但请留意：每手牌独立，路纸不改变概率。</p>
+      </details>
+      <details>
+        <summary>❓ 为什么本页没有具体下注建议？</summary>
+        <p>作为资料索引，我们避免给出任何操作指引。不同玩家风险承受能力和资金计划差异很大，客观数据比个人建议更可靠。</p>
+      </details>
+      <details>
+        <summary>❓ 从哪里可以核对更完整的规则？</summary>
+        <p>可以查阅公开的规则说明或参考《百家乐》资料站点，其中整理了不同地区赌场的规则差异。本页提供快速入口：<a href="https://index--baijiale.com" style="color:#117a6f;text-decoration:underline;">百家乐</a> 索引页收录了更详细的版本说明。</p>
+      </details>
+    </div>
+
+    <!-- 可信但克制的说明区块 -->
+    <div style="background: #ffffff; border-radius: 1.8rem; padding: 1.5rem 1.8rem; box-shadow: 0 4px 10px rgba(0, 30, 20, 0.03); border: 1px solid #d3e3df;">
+      <p style="font-size: 0.98rem; color: #1d4448;">
+        <span style="font-weight: 600;">📋 关于本索引页</span><br>
+        内容基于多份公开资料整理归类，仅供个人学习与信息索引使用。所有概率和规则均可能因地区、赌场规则修订而变化，请以官方说明为准。我们不推广任何形式的投注行为，也不暗示使用本页能获得任何优势。理性决策建立在完整认知之上。
+      </p>
+    </div>
+
+    <!-- footer 内嵌二次链接（自然） -->
+    <div class="footnote">
+      <span>资料版本  ·  信息摘要  ·  非投资建议</span>
+      <span>更多相关整理：<a href="https://index--baijiale.com">百家乐</a></span>
+    </div>
+  </div>
+</body>
+</html>
