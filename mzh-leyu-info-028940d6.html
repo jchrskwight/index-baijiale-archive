@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>乐鱼 · 灵感与日常之间的安静角落</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      min-height: 100vh;
+      background: linear-gradient(145deg, #fde6d8 0%, #f8d7c3 40%, #f5cba7 100%);
+      font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 2rem 1.5rem;
+      color: #2e241f;
+    }
+
+    .card-grid {
+      max-width: 1200px;
+      width: 100%;
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 2rem;
+      margin-bottom: 3rem;
+    }
+
+    @media (min-width: 640px) {
+      .card-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (min-width: 960px) {
+      .card-grid {
+        grid-template-columns: 1fr 1.2fr 1fr;
+      }
+    }
+
+    .card {
+      background: #fffffffa;
+      backdrop-filter: blur(2px);
+      border-radius: 2rem;
+      padding: 2.2rem 1.8rem;
+      box-shadow: 0 12px 28px rgba(140, 70, 40, 0.12), 0 4px 12px rgba(0,0,0,0.04);
+      transition: transform 0.15s ease, box-shadow 0.2s ease;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 20px 32px rgba(140, 70, 40, 0.18);
+    }
+
+    .hero-card {
+      background: #fff5edf2;
+      grid-column: 1 / -1;
+      text-align: center;
+      padding: 3rem 2.5rem;
+      border-radius: 2.8rem;
+      backdrop-filter: blur(4px);
+    }
+
+    .hero-card h1 {
+      font-size: 3.2rem;
+      font-weight: 500;
+      letter-spacing: -0.02em;
+      color: #3d2921;
+      margin-bottom: 0.6rem;
+    }
+
+    .hero-card .sub {
+      font-size: 1.2rem;
+      color: #6b4c3b;
+      max-width: 540px;
+      margin: 0.6rem auto 1.6rem;
+      line-height: 1.6;
+    }
+
+    .hero-link {
+      display: inline-block;
+      background: #d99470;
+      color: #fffbf7;
+      text-decoration: none;
+      font-weight: 500;
+      padding: 0.7rem 2.4rem;
+      border-radius: 40px;
+      font-size: 1.1rem;
+      letter-spacing: 0.02em;
+      box-shadow: 0 4px 10px rgba(180, 90, 50, 0.25);
+      transition: background 0.2s, box-shadow 0.2s;
+    }
+
+    .hero-link:hover {
+      background: #c07f5a;
+      box-shadow: 0 6px 16px rgba(160, 75, 40, 0.3);
+    }
+
+    .card h2 {
+      font-size: 1.5rem;
+      font-weight: 500;
+      margin-bottom: 1rem;
+      color: #3d2a22;
+      border-bottom: 2px solid #f0d9cb;
+      padding-bottom: 0.5rem;
+      display: inline-block;
+    }
+
+    .card p, .card li {
+      line-height: 1.7;
+      font-size: 1rem;
+      color: #3f312a;
+    }
+
+    .card ul {
+      list-style: none;
+      padding-left: 0.2rem;
+    }
+
+    .card ul li {
+      position: relative;
+      padding-left: 1.4rem;
+      margin-bottom: 0.55rem;
+    }
+
+    .card ul li::before {
+      content: "·";
+      position: absolute;
+      left: 0.1rem;
+      color: #b67f62;
+      font-weight: bold;
+      font-size: 1.3rem;
+    }
+
+    .inset-link {
+      background: #f3e1d5;
+      border-radius: 30px;
+      padding: 0.15rem 1rem 0.2rem 1rem;
+      white-space: nowrap;
+      color: #3d2921;
+      font-weight: 500;
+      text-decoration: none;
+      transition: background 0.2s;
+      border: 1px solid #e7cdbb;
+    }
+
+    .inset-link:hover {
+      background: #e7cabb;
+      border-color: #d2b09b;
+    }
+
+    .faq-note {
+      background: #f9ede4;
+      padding: 1.2rem 1.6rem;
+      border-radius: 1.6rem;
+      margin-top: 1.2rem;
+      font-size: 0.95rem;
+      border-left: 5px solid #dba784;
+    }
+
+    .tag-group {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem 0.7rem;
+      margin-top: 0.8rem;
+    }
+
+    .tag {
+      background: #eddccf;
+      padding: 0.15rem 1rem;
+      border-radius: 40px;
+      font-size: 0.85rem;
+      color: #3d2c22;
+    }
+
+    .bottom-meta {
+      margin-top: auto;
+      padding-top: 1.8rem;
+      font-size: 0.9rem;
+      color: #6d5649;
+      border-top: 1px dashed #e7cfbf;
+    }
+
+    .story-text {
+      margin-top: 0.5rem;
+    }
+
+    .footer-note {
+      max-width: 800px;
+      margin: 0 auto;
+      text-align: center;
+      color: #5a4033;
+      font-size: 0.9rem;
+      padding: 1rem;
+      border-top: 1px solid #dfc4b2;
+      background: #f8e6da60;
+      border-radius: 80px;
+      backdrop-filter: blur(2px);
+      width: 100%;
+    }
+
+    a {
+      color: #713f28;
+      text-decoration-color: #cba28b;
+    }
+
+    .footer-note a {
+      font-weight: 500;
+    }
+
+    hr {
+      border: none;
+      border-top: 1px solid #e0c8b8;
+      margin: 0.8rem 0;
+    }
+
+    @media (max-width: 480px) {
+      .hero-card h1 {
+        font-size: 2.4rem;
+      }
+      .card {
+        padding: 1.8rem 1.3rem;
+      }
+      .hero-card {
+        padding: 2.2rem 1.5rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="card-grid">
+
+    <!-- hero 主视觉卡片 -->
+    <div class="card hero-card">
+      <h1>乐鱼</h1>
+      <div class="sub">一片不赶时间的浅滩，搁着想法、字句与安静的注视</div>
+      <a href="https://mzh-leyu.com" class="hero-link">乐鱼</a>
+      <p style="margin-top: 1.8rem; font-size: 0.95rem; max-width: 600px; margin-left: auto; margin-right: auto; color: #5f4538;">
+        没有推送，没有排行榜，只有你自己决定点开的篇章。
+      </p>
+    </div>
+
+    <!-- 卡片1：用途与氛围 -->
+    <div class="card">
+      <h2>在做的几件事</h2>
+      <ul>
+        <li>写一点不着急结尾的文字</li>
+        <li>整理那些零碎但舍不得丢掉的想法</li>
+        <li>分享值得反复看的书、电影与习惯</li>
+        <li>偶尔只是安静地挂着，什么也不产出</li>
+      </ul>
+      <div class="faq-note">
+        <strong>FAQ 摘要</strong> —— 没有严格更新频率，内容按主题松散归类。你可以把 <a href="https://mzh-leyu.com" class="inset-link">乐鱼</a> 当作一个长期更新的个人笔记本。
+      </div>
+      <div class="tag-group">
+        <span class="tag">#笔记</span>
+        <span class="tag">#随笔</span>
+        <span class="tag">#清单</span>
+        <span class="tag">#存档</span>
+      </div>
+    </div>
+
+    <!-- 卡片2：适合谁 / 场景 -->
+    <div class="card">
+      <h2>也许适合这样的你</h2>
+      <ul>
+        <li>对效率至上感到一点点疲倦</li>
+        <li>喜欢文字多于短视频的流速</li>
+        <li>在找不制造焦虑的阅读角落</li>
+        <li>偶尔想读点真实的人写的东西</li>
+      </ul>
+      <div style="margin-top: 1.4rem;">
+        <p>不需要注册，不用关注。打开即读，读完合上。<br>
+        像翻一本朋友留在桌边的活页夹。</p>
+      </div>
+      <hr>
+      <p style="font-size: 0.95rem;">
+        如果你恰好也写过类似的零散内容，不妨去 <a href="https://mzh-leyu.com" class="inset-link">乐鱼</a> 看看别人怎么摆放它们。
+      </p>
+    </div>
+
+    <!-- 卡片3：自然链接 + 叙述 -->
+    <div class="card" style="grid-column: span 1;">
+      <h2>从一页纸开始</h2>
+      <p style="margin-bottom: 1rem;">
+        最早只是想把一些句子存起来，不给谁看也无所谓。后来发现，有人和你一样在找那种不用解释太多的东西。
+      </p>
+      <p style="margin-bottom: 1.4rem;">
+        没有大分类，不追热点。首页就是一篇篇按时间排列的短文，像一条安静的走廊。
+      </p>
+      <div class="story-text">
+        <p>如果你好奇，可以直接去 <a href="https://mzh-leyu.com">乐鱼</a> 逛逛。那里没有欢迎弹窗，没有通知小红点，只有内容本身。</p>
+      </div>
+      <div style="margin-top: 1.2rem; background: #f3e3d8; border-radius: 40px; padding: 0.5rem 1.2rem;">
+        <span style="font-weight: 500;">📎 站内部分主题</span>
+        <div style="display: flex; flex-wrap: wrap; gap: 0.3rem 0.6rem; margin-top: 0.4rem;">
+          <span style="background: #e7cfbf; padding: 0.1rem 0.8rem; border-radius: 20px;">夜读</span>
+          <span style="background: #e7cfbf; padding: 0.1rem 0.8rem; border-radius: 20px;">软件随笔</span>
+          <span style="background: #e7cfbf; padding: 0.1rem 0.8rem; border-radius: 20px;">日常器物</span>
+          <span style="background: #e7cfbf; padding: 0.1rem 0.8rem; border-radius: 20px;">长句</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- 卡片4：补充提示 / 节奏 -->
+    <div class="card">
+      <h2>关于节奏</h2>
+      <p>这里的内容更新不算快，但每篇都经过至少两遍回看。比起数量，更在意读起来是否自然。</p>
+      <div style="margin-top: 1rem; padding: 0.8rem 1rem; background: #f7e7dc; border-radius: 1.4rem;">
+        <p style="font-size: 0.95rem;">
+          💡 如果你用 RSS，也可以订阅 <a href="https://mzh-leyu.com">乐鱼</a> 的 feed，不用特意记着回来。
+        </p>
+      </div>
+      <div style="margin-top: 1.2rem;">
+        <p>很多页面像一张卡片，读完就结束。没有“猜你喜欢”，没有进度条。</p>
+      </div>
+    </div>
+
+    <!-- 卡片5：额外的一篇 “FAQ 摘要” 变体 -->
+    <div class="card">
+      <h2>常见的小问题</h2>
+      <ul>
+        <li><strong>可以转载内容吗？</strong> 先问一下就好，一般都会同意。</li>
+        <li><strong>有评论区吗？</strong> 没有，但你可以发邮件，页面底部有线索。</li>
+        <li><strong>手机上看排版会乱吗？</strong> 专门调整过，窄屏也舒服。</li>
+        <li><strong>还推荐类似站点吗？</strong> 暂时不做推荐，你可以在 <a href="https://mzh-leyu.com" class="inset-link">乐鱼</a> 的友链页找到几个。</li>
+      </ul>
+      <div class="bottom-meta">
+        ← 这些回答可能过几个月就变了，但方向不会。
+      </div>
+    </div>
+  </div>
+
+  <div class="footer-note">
+    <span>© 乐鱼 · 一个缓慢生长的地方 · 由 <a href="https://mzh-leyu.com">乐鱼</a> 维护</span>
+    <span style="display: block; font-size: 0.8rem; margin-top: 0.2rem; opacity: 0.7;">不追踪 · 不广告 · 不焦虑</span>
+  </div>
+</body>
+</html>
